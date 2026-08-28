@@ -20,3 +20,9 @@
 - [x] Make burger cards navigate to the selected burger detail route.
 - [x] Add extendable photo/content areas for future burger photography.
 - [x] Verify desktop and mobile detail pages and production build.
+
+## GitHub export
+
+- [ ] Confirm GitHub authentication and the target repository destination.
+- [ ] Prepare a clean repository export without generated build artifacts or secrets.
+- [ ] Push the current AJ Burger project and verify the remote branch.
