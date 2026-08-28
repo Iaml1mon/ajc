@@ -2,6 +2,7 @@
 import { ArrowUpRight, ChevronRight, Flame, Instagram, Menu, ShoppingBag, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { Link, useLocation } from "wouter";
+import { publicAsset } from "@/lib/assets";
 
 const navItems = [
   { label: "Burgers", href: "/" },
@@ -30,7 +31,7 @@ export function SiteHeader({ onOrder }: { onOrder: () => void }) {
     <>
       <header className="aj-header">
         <Link className="aj-brand" href="/" aria-label="AJ Burger home" onClick={() => setMenuOpen(false)}>
-          <img className="aj-brand-logo" src="/manus-storage/aj-burger-full-logo_249607db.png" alt="AJ Burger" />
+          <img className="aj-brand-logo" src={publicAsset("aj-burger-full-logo.webp")} alt="AJ Burger" />
         </Link>
 
         <nav className="aj-desktop-nav" aria-label="Primary navigation">

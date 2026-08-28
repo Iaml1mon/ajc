@@ -26,3 +26,15 @@
 - [x] Confirm GitHub authentication and the target repository destination.
 - [x] Prepare a clean repository export without generated build artifacts or secrets.
 - [x] Push the current AJ Burger project and verify the remote branch.
+
+## GitHub failure investigation
+
+- [ ] Inspect the GitHub repository tree, commit, and build configuration.
+- [ ] Reproduce the reported failure and determine whether it is source, asset, or deployment related.
+- [ ] Apply a fix, push it, and verify the corrected repository/deployment path.
+
+## Vercel deployment investigation
+
+- [ ] Inspect the deployed Vercel site and identify the visible failure.
+- [ ] Fix the build output, SPA routing, or asset hosting configuration that causes the deployment issue.
+- [ ] Verify the homepage and burger detail routes on the corrected deployment.
