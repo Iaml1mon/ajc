@@ -13,3 +13,10 @@
 - [x] Add a dedicated Contact page with a mailto link for ajburgers21@gmail.com.
 - [x] Add Instagram and TikTok social icons and links to the Contact page and navigation footer.
 - [x] Verify all routes, links, responsive layouts, and the production build.
+
+## Burger detail revision
+
+- [x] Inspect the supplied burger.html reference and match its detail-page structure.
+- [x] Make burger cards navigate to the selected burger detail route.
+- [x] Add extendable photo/content areas for future burger photography.
+- [x] Verify desktop and mobile detail pages and production build.

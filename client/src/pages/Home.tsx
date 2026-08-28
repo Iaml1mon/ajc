@@ -3,26 +3,7 @@ import { useMemo, useState, type CSSProperties } from "react";
 import { ArrowUpRight, ChevronDown, Search } from "lucide-react";
 import { toast } from "sonner";
 import { SitePage } from "@/components/SiteChrome";
-
-type Burger = {
-  id: string;
-  name: string;
-  price: number;
-  badge: string;
-  desc: string;
-  image: string;
-};
-
-const burgers: Burger[] = [
-  { id: "aj-cheese-burger", name: "AJ Cheese Burger", price: 14, badge: "Classic", desc: "Smashed beef patty, grilled onions, American cheese, pickles, ketchup and mustard sauce on a soft milk bun.", image: "/manus-storage/aj-cheese-burger-clean_d817c468.png" },
-  { id: "aj-chicken-burger", name: "AJ Chicken Burger", price: 16, badge: "Chicken", desc: "Chicken patty, shredded mixed cheese, lettuce, chilli and mayo on a soft milk bun.", image: "/manus-storage/aj-chicken-burger-clean_e0478151.png" },
-  { id: "aj-special", name: "AJ Special", price: 16, badge: "Signature", desc: "Smashed beef patty, American cheese, caramelised onions, pickles, lettuce, tomato and AJ’s special sauce on a soft milk bun.", image: "/manus-storage/aj-special-burger-clean_7f5d41bf.png" },
-  { id: "aj-whop-whop", name: "AJ Whop Whop", price: 16, badge: "Double Cheese", desc: "Smashed beef patty, double American cheese, raw onions, lettuce, tomato, ketchup and mayo on a soft milk bun.", image: "/manus-storage/aj-whop-whop-burger-clean_cb763348.png" },
-  { id: "aj-wagyu", name: "AJ Wagyu", price: 18, badge: "Premium", desc: "Wagyu patty, American cheese, grilled onions, tomato, lettuce, beetroot and AJ’s special sauce on a soft milk bun.", image: "/manus-storage/aj-wagyu-burger-clean_7de2dcd1.png" },
-  { id: "aj-tower", name: "AJ Tower", price: 18, badge: "Double", desc: "Two smashed beef patties, lettuce, tomato, American cheese, pickles and AJ’s special sauce on a soft milk bun.", image: "/manus-storage/aj-tower-burger-clean_46fe9b77.png" },
-  { id: "the-abd", name: "The A.B.D", price: 18, badge: "Spicy", desc: "Smashed beef patty, American cheese, jalapeños, onion, lettuce, tomato, BBQ sauce and mayo on a soft milk bun.", image: "/manus-storage/aj-abd-burger-clean_ef76aef1.png" },
-  { id: "aj-bunless", name: "AJ Bunless", price: 18, badge: "Low Carb", desc: "Choice of two smashed beef or chicken patties, American cheese, lettuce, tomato, pickles, sunny-side-up egg and AJ’s special sauce.", image: "/manus-storage/aj-bunless-burger-clean_89888b63.png" },
-];
+import { burgers } from "@/data/burgers";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -75,7 +56,7 @@ export default function Home() {
         {visibleBurgers.length ? (
           <div className="aj-burger-grid">
             {visibleBurgers.map((burger, index) => (
-              <button className="aj-card" key={burger.id} style={{ "--card-delay": `${index * 45}ms` } as CSSProperties} onClick={() => toast(`${burger.name} selected — coming in hot.`)} type="button">
+              <button className="aj-card" key={burger.id} style={{ "--card-delay": `${index * 45}ms` } as CSSProperties} onClick={() => { window.location.href = `/burger/${burger.id}`; }} type="button">
                 <div className="aj-card-image-wrap">
                   <img className="aj-card-image" src={burger.image} alt={`${burger.name} burger`} />
                   <span className="aj-badge">{burger.badge}</span>
@@ -91,7 +72,7 @@ export default function Home() {
         ) : (
           <div className="aj-empty-state">
             <p>No stacks match that search.</p>
-            <button type="button" onClick={() => setQuery("")}>Clear search</button>
+            <button type="button" onClick={() => { setQuery(""); toast("Menu reset."); }}>Clear search</button>
           </div>
         )}
       </section>

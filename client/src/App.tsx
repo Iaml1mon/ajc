@@ -1,10 +1,11 @@
-// AJ Burger style reminder: keep the public site organized as a dark framed catalog with Burgers as the home route and focused content pages behind the header navigation.
+// AJ Burger style reminder: route the experience as a focused catalog—Burgers stays home, dedicated content pages stay separate, and each menu card opens a matching detail view.
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import BurgerDetail from "./pages/BurgerDetail";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import OurStory from "./pages/OurStory";
@@ -14,6 +15,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/burger/:id" component={BurgerDetail} />
       <Route path="/our-story" component={OurStory} />
       <Route path="/quality" component={Quality} />
       <Route path="/contact" component={Contact} />
