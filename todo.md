@@ -6,3 +6,10 @@
 - [x] Add a demo Our Story section with reference-matched copy and layout.
 - [x] Add an order-provider popup with Uber Eats and DoorDash links.
 - [x] Verify responsive layout, popup behavior, external links, and production build.
+
+## Navigation and contact revision
+
+- [x] Keep the burger catalog on the homepage and move story and quality content to dedicated routes.
+- [x] Add a dedicated Contact page with a mailto link for ajburgers21@gmail.com.
+- [x] Add Instagram and TikTok social icons and links to the Contact page and navigation footer.
+- [x] Verify all routes, links, responsive layouts, and the production build.
