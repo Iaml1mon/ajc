@@ -90,10 +90,14 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("featured");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [orderOpen, setOrderOpen] = useState(false);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenuOpen(false);
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        setOrderOpen(false);
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
@@ -111,7 +115,7 @@ export default function Home() {
   }, [query, sort]);
 
   const handleOrder = () => {
-    toast("Order counter is warming up — choose your stack first.");
+    setOrderOpen(true);
   };
 
   const handleCardClick = (burger: Burger) => {
@@ -123,12 +127,7 @@ export default function Home() {
       <div className="aj-frame">
         <header className="aj-header">
           <a className="aj-brand" href="#top" aria-label="AJ Burger home">
-            <span className="aj-wordmark" aria-hidden="true">
-              <span className="aj-wordmark-top">AJ</span>
-              <span className="aj-wordmark-name">Burger</span>
-              <span className="aj-wordmark-accent" />
-            </span>
-            <img className="aj-brand-mark" src="/manus-storage/aj-burger-mark_4d4637cc.png" alt="" />
+            <img className="aj-brand-logo" src="/manus-storage/aj-burger-full-logo_249607db.png" alt="AJ Burger" />
           </a>
 
           <nav className="aj-desktop-nav" aria-label="Primary navigation">
@@ -247,15 +246,81 @@ export default function Home() {
           )}
         </section>
 
+        <section className="aj-info-section" id="story" aria-labelledby="story-title">
+          <div className="aj-info-heading">
+            <p className="aj-section-kicker">The AJ way</p>
+            <h2 id="story-title">Our story</h2>
+            <span className="aj-heading-rule" aria-hidden="true" />
+          </div>
+          <div className="aj-story-copy">
+            <p className="aj-story-lead">Big flavour, built from the ground up.</p>
+            <p>AJ Burger started with a simple idea: make the kind of burger you crave before you even see the menu. Every stack is smashed fresh, layered with bold toppings, and served without the fuss.</p>
+            <p className="aj-demo-note">Demo story copy — replace this section with AJ Burger’s confirmed history, team details, and opening story.</p>
+          </div>
+        </section>
+
+        <section className="aj-quality-section" id="quality" aria-labelledby="quality-title">
+          <div className="aj-quality-heading">
+            <p className="aj-section-kicker">No shortcuts</p>
+            <h2 id="quality-title">Quality first</h2>
+            <p>Good burgers begin with ingredients you can stand behind.</p>
+          </div>
+          <div className="aj-quality-grid">
+            <article className="aj-quality-card aj-certificate-slot" aria-label="Halal certificate placeholder">
+              <div className="aj-quality-card-top"><span>01</span><span className="aj-slot-status">Space reserved</span></div>
+              <div className="aj-certificate-stamp">H</div>
+              <h3>Halal certified</h3>
+              <p>Official halal certificate artwork can be added here when ready.</p>
+              <span className="aj-upload-hint">Add certificate later <ArrowUpRight size={14} aria-hidden="true" /></span>
+            </article>
+            <article className="aj-quality-card">
+              <div className="aj-quality-card-top"><span>02</span><span className="aj-slot-status">Sourcing note</span></div>
+              <div className="aj-quality-icon"><Flame size={22} /></div>
+              <h3>Where our meat comes from</h3>
+              <p>We choose beef and chicken through trusted Australian suppliers selected for freshness and consistency.</p>
+              <span className="aj-demo-note">Demo copy — confirm supplier and sourcing details before publishing.</span>
+            </article>
+            <article className="aj-quality-card">
+              <div className="aj-quality-card-top"><span>03</span><span className="aj-slot-status">Every service</span></div>
+              <div className="aj-quality-icon"><ShoppingBag size={22} /></div>
+              <h3>Made fresh</h3>
+              <p>From the smash to the final wrap, each order is prepared to hit the pass hot and satisfying.</p>
+            </article>
+          </div>
+        </section>
+
         <footer className="aj-footer" id="contact">
           <div className="aj-footer-mark" aria-hidden="true"><Flame size={21} /></div>
           <p><span>Fresh ingredients.</span> <span>Bold flavours.</span> True satisfaction.</p>
           <div className="aj-footer-links">
-            <a href="#story" id="story">Our story</a>
-            <a href="#quality" id="quality">Quality first</a>
+            <a href="#story">Our story</a>
+            <a href="#quality">Quality first</a>
             <button type="button" onClick={handleOrder}>Order online <ArrowUpRight size={13} aria-hidden="true" /></button>
           </div>
         </footer>
+
+        {orderOpen && (
+          <div className="aj-modal-backdrop" role="presentation" onMouseDown={() => setOrderOpen(false)}>
+            <div className="aj-order-modal" role="dialog" aria-modal="true" aria-labelledby="order-title" onMouseDown={(event) => event.stopPropagation()}>
+              <button className="aj-modal-close" type="button" aria-label="Close order options" onClick={() => setOrderOpen(false)}><X size={19} /></button>
+              <div className="aj-modal-flame" aria-hidden="true"><Flame size={20} /></div>
+              <p className="aj-section-kicker">Choose your counter</p>
+              <h2 id="order-title">Order AJ Burger</h2>
+              <p className="aj-modal-copy">Pick your delivery partner and we’ll send you straight to the menu.</p>
+              <div className="aj-provider-list">
+                <a className="aj-provider-button" href="https://www.ubereats.com/au/store/aj-burgers/sHkTeYksRNeA1PGfFcbQrQ" target="_blank" rel="noreferrer">
+                  <span><strong>Uber Eats</strong><small>Delivery &amp; pickup</small></span>
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </a>
+                <a className="aj-provider-button" href="https://www.doordash.com/store/aj-burgers-liverpool-sefton-29595025/37105560/" target="_blank" rel="noreferrer">
+                  <span><strong>DoorDash</strong><small>Delivery &amp; pickup</small></span>
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </a>
+              </div>
+              <button className="aj-modal-later" type="button" onClick={() => setOrderOpen(false)}>Maybe later</button>
+            </div>
+          </div>
+        )}
       </div>
     </main>
   );
