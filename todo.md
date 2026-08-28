@@ -23,6 +23,6 @@
 
 ## GitHub export
 
-- [ ] Confirm GitHub authentication and the target repository destination.
-- [ ] Prepare a clean repository export without generated build artifacts or secrets.
-- [ ] Push the current AJ Burger project and verify the remote branch.
+- [x] Confirm GitHub authentication and the target repository destination.
+- [x] Prepare a clean repository export without generated build artifacts or secrets.
+- [x] Push the current AJ Burger project and verify the remote branch.
